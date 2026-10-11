@@ -114,6 +114,7 @@ const productsData = [
 
 let cart = [];
 const WHATSAPP_NUMBER = "923001311047";
+let scrollPos = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -272,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cart.push(item);
     updateCartUI();
     cartDrawer.classList.add('active');
-    document.body.classList.add('cart-open');
   };
 
   window.removeFromCart = (index) => {
@@ -310,18 +310,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cartTrigger.addEventListener('click', () => {
     cartDrawer.classList.add('active');
-    document.body.classList.add('cart-open');
   });
 
   closeCartBtn.addEventListener('click', () => {
     cartDrawer.classList.remove('active');
-    document.body.classList.remove('cart-open');
   });
 
   cartDrawer.addEventListener('click', (e) => {
     if (e.target === cartDrawer) {
       cartDrawer.classList.remove('active');
-      document.body.classList.remove('cart-open');
     }
   });
 
@@ -345,9 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(url, '_blank');
   });
 
-  // 6. PRODUCT MODAL SPECIFICATIONS
+  // 6. PRODUCT MODAL SPECIFICATIONS (MOBILE VIEW SHIFT FIX)
   const modal = document.getElementById('productModal');
-  const sheetCloseX = modal.querySelector('.sheet-close-x');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
   const modalPlaceholderText = document.getElementById('modalPlaceholderText');
   const modalTag = document.getElementById('modalTag');
   const modalTitle = document.getElementById('modalTitle');
@@ -377,27 +374,32 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    // Safe scrolling capture bina screen shrink kiye
+    scrollPos = window.pageYOffset;
     modal.classList.add('active');
     document.body.classList.add('modal-open');
+    document.body.style.top = `-${scrollPos}px`;
   };
 
-  sheetCloseX.addEventListener('click', () => {
+  function closeModal() {
     modal.classList.remove('active');
     document.body.classList.remove('modal-open');
-  });
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPos);
+  }
+
+  modalCloseBtn.addEventListener('click', closeModal);
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
-      modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
+      closeModal();
     }
   });
 
   modalAddToCartBtn.addEventListener('click', () => {
     if (activeModalProductId) {
       addToCart(activeModalProductId);
-      modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
+      closeModal();
     }
   });
 
@@ -407,30 +409,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 7. DASTAAN SCROLL REVEAL ANIMATIONS
-  const revealElements = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealElements.forEach(el => observer.observe(el));
-  } else {
-    revealElements.forEach(el => el.classList.add('is-visible'));
-  }
-
   // Global ESC Key Handler
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      modal.classList.remove('active');
+      closeModal();
       cartDrawer.classList.remove('active');
       closeAppleDrawer();
-      document.body.classList.remove('modal-open');
-      document.body.classList.remove('cart-open');
     }
   });
 });

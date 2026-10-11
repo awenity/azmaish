@@ -1,14 +1,14 @@
 /* =========================================================================
-   AZMAISH ORIGINAL PALETTE (DARK, WHITE & BRAND FLAME ORANGE)
+   AZMAISH COLOR SCHEME & GLOBAL STYLING
    ========================================================================= */
 :root {
-  --bg-page: #0C0C0E;          /* Deep matte obsidian */
+  --bg-page: #0C0C0E;          /* Pure matte dark */
   --bg-card: #151518;          /* Charcoal card tile */
-  --bg-surface: #1E1E22;       /* Raised stone surface */
+  --bg-surface: #1E1E22;       /* Surface tone */
   --text-main: #FFFFFF;        /* Pure white */
-  --text-muted: #9595A2;       /* Refined taupe grey */
-  --border-hairline: #26262B;  /* Ultra-clean architectural border */
-  --brand-flame: #FF4500;      /* Signature Azmaish flame orange */
+  --text-muted: #9595A2;       /* Slate taupe grey */
+  --border-hairline: #26262B;  /* Architectural border */
+  --brand-flame: #FF4500;      /* Signature flame orange */
   --brand-flame-hover: #FF3B00;
   --brand-wa: #25D366;
   
@@ -24,27 +24,26 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  background-color: var(--bg-page);
-  scroll-behavior: smooth;
-}
-
-body {
+html, body {
   background-color: var(--bg-page);
   color: var(--text-main);
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
+  overflow-x: hidden; /* Screen shifting prevent karta hai */
 }
 
-body.drawer-open, body.modal-open, body.cart-open {
-  overflow: hidden;
+/* Mobile Click Bug Prevention */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
-/* =========================================================================
-   TOP TICKER
-   ========================================================================= */
+/* Top Ticker */
 .az-ticker {
   background: var(--brand-flame);
   color: #FFFFFF;
@@ -69,14 +68,12 @@ body.drawer-open, body.modal-open, body.cart-open {
   100% { transform: translateX(-50%); }
 }
 
-/* =========================================================================
-   HEADER & APPLE MINIMAL HAMBURGER
-   ========================================================================= */
+/* Header */
 .az-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(12, 12, 14, 0.88);
+  background: rgba(12, 12, 14, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-hairline);
@@ -141,10 +138,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   padding: 0.4rem;
   border-radius: 50%;
   transition: transform 0.15s, color 0.15s;
-}
-
-.nav-icon-btn:hover {
-  color: var(--brand-flame);
 }
 
 .cart-badge-wrap {
@@ -240,13 +233,11 @@ body.drawer-open, body.modal-open, body.cart-open {
   cursor: pointer;
 }
 
-/* =========================================================================
-   APPLE MOBILE DRAWER MENU (IMAGE 2 EXACT STYLING)
-   ========================================================================= */
+/* Apple Mobile Drawer Menu */
 .apple-full-drawer {
   position: fixed;
   inset: 0;
-  background-color: #161617; /* Exact Apple Mobile Menu Dark */
+  background-color: #161617;
   z-index: 900;
   display: flex;
   flex-direction: column;
@@ -274,7 +265,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0.2rem;
 }
 
 .drawer-nav-list {
@@ -301,10 +291,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   transform: translateY(0);
 }
 
-.drawer-link:active, .drawer-link:hover {
-  color: var(--brand-flame);
-}
-
 .drawer-link.flame-link {
   color: var(--brand-flame);
   font-size: 1.25rem;
@@ -315,9 +301,7 @@ body.drawer-open, body.modal-open, body.cart-open {
   font-size: 1.25rem;
 }
 
-/* =========================================================================
-   HERO SECTION
-   ========================================================================= */
+/* Hero Section */
 .az-hero {
   padding: 1.25rem 1rem 1.8rem 1rem;
 }
@@ -438,9 +422,7 @@ body.drawer-open, body.modal-open, body.cart-open {
   line-height: 1.35;
 }
 
-/* =========================================================================
-   PRODUCTS: 2 PER ROW ON MOBILE (NO SCROLLER BAR ABOVE)
-   ========================================================================= */
+/* Products Catalogue: 2 Per Row on Mobile */
 .az-catalogue {
   max-width: 1200px;
   margin: 0 auto;
@@ -509,11 +491,7 @@ body.drawer-open, body.modal-open, body.cart-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.product-placeholder-wrap:hover {
-  background: #202026;
+  touch-action: manipulation;
 }
 
 .placeholder-badge {
@@ -605,12 +583,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.2s;
-}
-
-.btn-card-cart:hover {
-  background: var(--brand-flame);
-  border-color: var(--brand-flame);
 }
 
 .btn-card-buy {
@@ -627,11 +599,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   cursor: pointer;
   text-align: center;
   white-space: nowrap;
-  transition: background 0.2s;
-}
-
-.btn-card-buy:active {
-  background: var(--brand-flame-hover);
 }
 
 .no-results-box {
@@ -651,23 +618,24 @@ body.drawer-open, body.modal-open, body.cart-open {
 }
 
 /* =========================================================================
-   APPLE A3 DESIGN WALL (2-COLUMN: TOP LARGE, BOTTOM COMPACT)
+   APPLE DESIGN WALL: 2 HORIZONTAL SLIDING ROWS (IMAGE C61336 EXACT)
    ========================================================================= */
 .az-design-wall {
   background-color: #060608;
   border-top: 1px solid var(--border-hairline);
   border-bottom: 1px solid var(--border-hairline);
-  padding: 4.5rem 1rem 5.5rem 1rem;
+  padding: 4.5rem 0 5.5rem 0;
+  overflow: hidden;
 }
 
 .wall-shell {
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .wall-header-center {
   text-align: center;
-  margin-bottom: 2.8rem;
+  padding: 0 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .wall-eyebrow {
@@ -693,148 +661,113 @@ body.drawer-open, body.modal-open, body.cart-open {
   margin: 0.5rem auto 0 auto;
 }
 
-/* 2-Column Responsive Layout */
-.a3-two-column-wall {
+/* The Apple Carousel Stage */
+.apple-wall-stage {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.a3-col-pair {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-/* Strict ISO A3 Ratio: 1 : 1.414 */
-.a3-blueprint-card {
-  aspect-ratio: 1 / 1.414;
-  background: #111115;
-  border-radius: 16px;
-  padding: 10px;
-  border: 1px solid var(--border-hairline);
-  position: relative;
-  transition: transform 0.3s var(--ease), border-color 0.3s;
-}
-
-.a3-blueprint-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 69, 0, 0.45);
-}
-
-.a3-matting-frame {
+  gap: 1.25rem;
   width: 100%;
-  height: 100%;
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+}
+
+.wall-scroll-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 1.25rem;
+}
+
+.wall-scroll-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.wall-scroll-track {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.wall-card {
   position: relative;
-  background: radial-gradient(circle at 50% 25%, rgba(255, 69, 0, 0.08) 0%, transparent 70%);
-}
-
-.a3-iso-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 16px 16px;
-  pointer-events: none;
-}
-
-.a3-card-top, .a3-card-bottom {
+  border-radius: 18px;
+  scroll-snap-align: start;
+  flex-shrink: 0;
   display: flex;
-  justify-content: space-between;
-  font-size: 0.6rem;
+  align-items: flex-end;
+  padding: 1.1rem;
+  transition: transform 0.3s var(--ease);
+}
+
+.wall-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ROW 1: BADA SIZE (Top Row) */
+.wall-card-lg {
+  width: clamp(200px, 32vw, 260px);
+  height: clamp(280px, 44vw, 360px);
+}
+
+/* ROW 2: CHOTA SIZE (Bottom Row) */
+.wall-card-sm {
+  width: clamp(140px, 22vw, 185px);
+  height: clamp(200px, 31vw, 255px);
+}
+
+.wall-card-id {
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 1.5px;
-  color: var(--text-muted);
-  position: relative;
-  z-index: 2;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
 }
 
-.a3-card-center {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
+/* Palette Swatches matching Reference Image C61336 */
+.card-rose      { background-color: #D67D7D; }
+.card-graphite  { background-color: #55585B; }
+.card-olive     { background-color: #6E7404; }
+.card-flame     { background-color: #FF4E4B; }
+.card-espresso  { background-color: #5C4A4C; }
+.card-amber     { background-color: #FF8A43; }
 
-.a3-optic-crosshair {
-  width: 22px;
-  height: 22px;
-  border: 1px solid rgba(255, 69, 0, 0.65);
-  border-radius: 50%;
-  margin: 0 auto 0.9rem auto;
-  position: relative;
-}
-
-.a3-optic-crosshair::before, .a3-optic-crosshair::after {
-  content: '';
-  position: absolute;
-  background: rgba(255, 69, 0, 0.65);
-}
-
-.a3-optic-crosshair::before {
-  top: 50%; left: -5px; right: -5px; height: 1px;
-}
-
-.a3-optic-crosshair::after {
-  left: 50%; top: -5px; bottom: -5px; width: 1px;
-}
-
-.a3-title-text {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-bottom: 0.3rem;
-  letter-spacing: -0.3px;
-}
-
-.a3-spec-subtitle {
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: var(--brand-flame);
-}
-
-.a3-badge-status {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
-}
-
-/* Secondary Compact Pair */
-.bottom-pair .a3-matting-frame {
-  padding: 0.75rem;
-}
-
-.bottom-pair .a3-title-text {
-  font-size: 0.95rem;
-}
+.card-sand      { background-color: #DBA278; }
+.card-taupe     { background-color: #68574D; }
+.card-sage      { background-color: #72856B; }
+.card-slate     { background-color: #3C3342; }
+.card-lavender  { background-color: #F89EEB; }
+.card-plum      { background-color: #7B5F77; }
+.card-blush     { background-color: #F8CADC; }
+.card-mist      { background-color: #EBD3DF; }
 
 /* =========================================================================
-   MODALS & DRAWERS
+   MODAL FIX: ZERO MOBILE LAYOUT SHIFT OR JUMP
    ========================================================================= */
-.az-modal-backdrop, .cart-drawer-backdrop {
+.az-modal-backdrop {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  touch-action: pan-y;
 }
 
-.az-modal-backdrop.active, .cart-drawer-backdrop.active {
+.az-modal-backdrop.active {
   opacity: 1;
   visibility: visible;
 }
@@ -842,17 +775,18 @@ body.drawer-open, body.modal-open, body.cart-open {
 .az-modal-sheet {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  max-height: 90vh;
+  max-width: 580px;
+  max-height: 88vh;
   background: #151518;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 1.5rem 1.25rem 2rem 1.25rem;
+  padding: 1.4rem 1.2rem 2.2rem 1.2rem;
   transform: translateY(100%);
   transition: transform 0.35s var(--ease);
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-hairline);
+  overscroll-behavior: contain;
 }
 
 .az-modal-backdrop.active .az-modal-sheet {
@@ -860,14 +794,14 @@ body.drawer-open, body.modal-open, body.cart-open {
 }
 
 .sheet-drag-pill {
-  width: 40px;
+  width: 38px;
   height: 4px;
   background: var(--border-hairline);
   border-radius: 99px;
-  margin: -0.5rem auto 1rem auto;
+  margin: -0.4rem auto 1rem auto;
 }
 
-.sheet-close-x, .cart-close-x {
+.sheet-close-x {
   position: absolute;
   top: 1rem;
   right: 1.2rem;
@@ -887,6 +821,7 @@ body.drawer-open, body.modal-open, body.cart-open {
 .sheet-scroll-body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  max-height: calc(88vh - 40px);
 }
 
 .modal-placeholder-tile {
@@ -1025,8 +960,22 @@ body.drawer-open, body.modal-open, body.cart-open {
 
 /* Cart Panel */
 .cart-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
   justify-content: flex-end;
-  align-items: stretch;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .cart-drawer-panel {
@@ -1054,10 +1003,15 @@ body.drawer-open, body.modal-open, body.cart-open {
   border-bottom: 1px solid var(--border-hairline);
 }
 
-.cart-drawer-top h3 {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 800;
+.cart-close-x {
+  background: var(--bg-surface);
+  border: none;
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #FFFFFF;
 }
 
 .cart-items-feed {
@@ -1138,9 +1092,7 @@ body.drawer-open, body.modal-open, body.cart-open {
   cursor: pointer;
 }
 
-/* =========================================================================
-   FOOTER
-   ========================================================================= */
+/* Footer */
 .az-footer {
   background-color: #060608;
   padding: 4rem 1rem 3rem 1rem;
@@ -1215,19 +1167,7 @@ body.drawer-open, body.modal-open, body.cart-open {
   margin-top: 0.3rem;
 }
 
-/* Dastaan Smooth Scroll Reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Desktop Scale */
+/* Responsive Breakpoints */
 @media (min-width: 768px) {
   .product-duo-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1247,9 +1187,6 @@ body.drawer-open, body.modal-open, body.cart-open {
   }
   .sheet-drag-pill {
     display: none;
-  }
-  .a3-two-column-wall {
-    gap: 2rem;
   }
 }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>AZMAISH — Statements Redefined</title>
   <link rel="icon" type="image/png" href="mascot.png">
 
@@ -26,8 +26,6 @@
       <span>DIRECT WHATSAPP CONCIERGE</span>
       <span>•</span>
       <span>PAKISTAN-WIDE SECURE CRATE DISPATCH</span>
-      <span>•</span>
-      <span>AZMAISH DESIGN FOUNDRY</span>
     </div>
   </aside>
 
@@ -81,7 +79,7 @@
     </div>
   </header>
 
-  <!-- Apple Dark e Full-Screen Drawer Menu (Image 2 Match) -->
+  <!-- Apple Dark Matte Full-Screen Drawer Menu -->
   <div class="apple-full-drawer" id="appleDrawer" aria-hidden="true">
     <div class="drawer-header-row">
       <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
@@ -89,13 +87,13 @@
     <nav class="drawer-nav-list">
       <a href="#heroHighlights" class="drawer-link" style="--order: 1">Highlights</a>
       <a href="#productsCatalogue" class="drawer-link" style="--order: 2">Archive</a>
-      <a href="#designWall" class="drawer-link" style="--order: 3">A3 Design Wall</a>
+      <a href="#designWall" class="drawer-link" style="--order: 3">Design Wall</a>
       <a href="https://instagram.com/azmaish_store" target="_blank" rel="noopener" class="drawer-link flame-link" style="--order: 4">Instagram ↗</a>
       <a href="https://wa.me/923001311047" target="_blank" rel="noopener" class="drawer-link wa-link" style="--order: 5">WhatsApp Concierge 💬</a>
     </nav>
   </div>
 
-  <main>
+  <main id="mainContainer">
     <!-- HERO SLIDER SECTION -->
     <section class="az-hero" id="heroHighlights">
       <div class="hero-shell">
@@ -136,7 +134,7 @@
           <article class="hero-banner-card">
             <div class="card-photo">
               <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80" alt="Hero 3">
-              <div class="photo-vignette"></div>
+              <div class="card-photo-vignette"></div>
             </div>
             <div class="card-caption">
               <span class="caption-tag">PHILOSOPHY</span>
@@ -170,108 +168,80 @@
       </div>
     </section>
 
-    <!-- APPLE A3 DESIGN WALL (2-COLUMN: TOP LARGE, BOTTOM COMPACT) -->
+    <!-- APPLE DESIGN WALL: 2 HORIZONTAL SLIDING ROWS (IMAGE C61336 MATCH) -->
     <section class="az-design-wall" id="designWall">
       <div class="wall-shell">
         <div class="wall-header-center">
-          <span class="wall-eyebrow">BLUEPRINT ANTHOLOGY</span>
-          <h2 class="wall-title">A3 Design Wall</h2>
-          <p class="wall-sub">ISO 216 architectural ratio (1:1.414). Structural crosshairs and material specifications.</p>
+          <span class="wall-eyebrow">GALLERY ANTHOLOGY</span>
+          <h2 class="wall-title">Visual Wall</h2>
+          <p class="wall-sub">Precision proportioned modules inspired by modern architectural color palettes.</p>
         </div>
 
-        <!-- 2 Column Wall Layout -->
-        <div class="a3-two-column-wall">
-          <!-- TOP ROW: PRIMARY SCALE FRAMES -->
-          <div class="a3-col-pair top-pair">
-            <article class="a3-blueprint-card a3-large reveal">
-              <div class="a3-matting-frame">
-                <div class="a3-iso-grid"></div>
-                <div class="a3-card-top">
-                  <span class="a3-tag-mono">ISO 216 / A3-01</span>
-                  <span class="a3-scale">SCALE 1:1.414</span>
-                </div>
-                <div class="a3-card-center">
-                  <div class="a3-optic-crosshair"></div>
-                  <h3 class="a3-title-text">ISLAMIC GEOMETRY</h3>
-                  <span class="a3-spec-subtitle">3D TEXTURED ALLOY EMBOSSING</span>
-                </div>
-                <div class="a3-card-bottom">
-                  <span>DIM: 297 × 420 MM</span>
-                  <span class="a3-badge-status">STUDIO SPEC</span>
-                </div>
+        <!-- Two Rows Carousel Wrapper -->
+        <div class="apple-wall-stage">
+          <!-- ROW 1: BADA SIZE (Top Row) -->
+          <div class="wall-scroll-track-wrap top-track-wrap">
+            <div class="wall-scroll-track">
+              <div class="wall-card wall-card-lg card-rose">
+                <span class="wall-card-id">01 / A3-L</span>
               </div>
-            </article>
-
-            <article class="a3-blueprint-card a3-large reveal">
-              <div class="a3-matting-frame">
-                <div class="a3-iso-grid"></div>
-                <div class="a3-card-top">
-                  <span class="a3-tag-mono">ISO 216 / A3-02</span>
-                  <span class="a3-scale">SCALE 1:1.414</span>
-                </div>
-                <div class="a3-card-center">
-                  <div class="a3-optic-crosshair"></div>
-                  <h3 class="a3-title-text">RAW CAST SLAB</h3>
-                  <span class="a3-spec-subtitle">BRUTALIST MOLTEN POUR</span>
-                </div>
-                <div class="a3-card-bottom">
-                  <span>DIM: 297 × 420 MM</span>
-                  <span class="a3-badge-status">STUDIO SPEC</span>
-                </div>
+              <div class="wall-card wall-card-lg card-graphite">
+                <span class="wall-card-id">02 / A3-L</span>
               </div>
-            </article>
+              <div class="wall-card wall-card-lg card-olive">
+                <span class="wall-card-id">03 / A3-L</span>
+              </div>
+              <div class="wall-card wall-card-lg card-flame">
+                <span class="wall-card-id">04 / A3-L</span>
+              </div>
+              <div class="wall-card wall-card-lg card-espresso">
+                <span class="wall-card-id">05 / A3-L</span>
+              </div>
+              <div class="wall-card wall-card-lg card-amber">
+                <span class="wall-card-id">06 / A3-L</span>
+              </div>
+            </div>
           </div>
 
-          <!-- BOTTOM ROW: SECONDARY COMPACT FRAMES -->
-          <div class="a3-col-pair bottom-pair">
-            <article class="a3-blueprint-card a3-compact reveal">
-              <div class="a3-matting-frame">
-                <div class="a3-iso-grid"></div>
-                <div class="a3-card-top">
-                  <span class="a3-tag-mono">ISO 216 / A3-03</span>
-                  <span class="a3-scale">COMPACT</span>
-                </div>
-                <div class="a3-card-center">
-                  <div class="a3-optic-crosshair"></div>
-                  <h3 class="a3-title-text">CANTILEVER RIG</h3>
-                  <span class="a3-spec-subtitle">CARBON STEEL TENSION</span>
-                </div>
-                <div class="a3-card-bottom">
-                  <span>SERIES: 03</span>
-                  <span class="a3-badge-status">READY</span>
-                </div>
+          <!-- ROW 2: CHOTA SIZE (Bottom Row) -->
+          <div class="wall-scroll-track-wrap bottom-track-wrap">
+            <div class="wall-scroll-track">
+              <div class="wall-card wall-card-sm card-sand">
+                <span class="wall-card-id">01 / A4-S</span>
               </div>
-            </article>
-
-            <article class="a3-blueprint-card a3-compact reveal">
-              <div class="a3-matting-frame">
-                <div class="a3-iso-grid"></div>
-                <div class="a3-card-top">
-                  <span class="a3-tag-mono">ISO 216 / A3-04</span>
-                  <span class="a3-scale">COMPACT</span>
-                </div>
-                <div class="a3-card-center">
-                  <div class="a3-optic-crosshair"></div>
-                  <h3 class="a3-title-text">TIMBER MONOLITH</h3>
-                  <span class="a3-spec-subtitle">ORGANIC HARVESTED SHEESHAM</span>
-                </div>
-                <div class="a3-card-bottom">
-                  <span>SERIES: 04</span>
-                  <span class="a3-badge-status">READY</span>
-                </div>
+              <div class="wall-card wall-card-sm card-taupe">
+                <span class="wall-card-id">02 / A4-S</span>
               </div>
-            </article>
+              <div class="wall-card wall-card-sm card-sage">
+                <span class="wall-card-id">03 / A4-S</span>
+              </div>
+              <div class="wall-card wall-card-sm card-slate">
+                <span class="wall-card-id">04 / A4-S</span>
+              </div>
+              <div class="wall-card wall-card-sm card-lavender">
+                <span class="wall-card-id">05 / A4-S</span>
+              </div>
+              <div class="wall-card wall-card-sm card-plum">
+                <span class="wall-card-id">06 / A4-S</span>
+              </div>
+              <div class="wall-card wall-card-sm card-blush">
+                <span class="wall-card-id">07 / A4-S</span>
+              </div>
+              <div class="wall-card wall-card-sm card-mist">
+                <span class="wall-card-id">08 / A4-S</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- PRODUCT SPECIFICATION MODAL -->
+  <!-- PRODUCT SPECIFICATION MODAL (FIXED MOBILE SCROLLING BUG) -->
   <div id="productModal" class="az-modal-backdrop" aria-hidden="true">
     <div class="az-modal-sheet" role="dialog" aria-modal="true">
       <div class="sheet-drag-pill"></div>
-      <button class="sheet-close-x" aria-label="Close modal">&times;</button>
+      <button class="sheet-close-x" id="modalCloseBtn" aria-label="Close modal">&times;</button>
       
       <div class="sheet-scroll-body">
         <div class="modal-placeholder-tile">
@@ -318,7 +288,7 @@
       <div class="cart-drawer-bottom">
         <div class="cart-subtotal-line">
           <span>Subtotal</span>
-          <strong id="cartSubtotal">Rs 0</strong>
+          <strong id="cartSubtotal">PKR 0</strong>
         </div>
         <button id="checkoutWhatsAppBtn" class="btn-checkout-wa">
           Order Bag on WhatsApp 💬
@@ -342,7 +312,7 @@
           <a href="https://instagram.com/azmaish_store" target="_blank" rel="noopener" class="footer-link-ig">@azmaish_store</a>
         </div>
         <div class="footer-col">
-          <span class="footer-col-title">Studio</span>
+          <span class="footer-col-title">Studio Locations</span>
           <p class="footer-meta-text">Lahore &bull; Karachi &bull; Islamabad</p>
           <p class="footer-copy-text">&copy; 2026 Azmaish. All Rights Reserved.</p>
         </div>
