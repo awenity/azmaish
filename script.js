@@ -122,6 +122,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const appleMenuBtn = document.getElementById('appleMenuBtn');
   const appleDrawer = document.getElementById('appleDrawer');
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  // Touch Swipe & Mouse Drag for Infinite Wall Viewports
+  const setupInfiniteDrag = (viewportId) => {
+    const viewport = document.getElementById(viewportId);
+    if (!viewport) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const startDrag = (pageX) => {
+      isDown = true;
+      viewport.classList.add('is-dragging');
+      startX = pageX - viewport.offsetLeft;
+      scrollLeft = viewport.scrollLeft;
+    };
+
+    const stopDrag = () => {
+      isDown = false;
+      viewport.classList.remove('is-dragging');
+    };
+
+    const moveDrag = (pageX) => {
+      if (!isDown) return;
+      const x = pageX - viewport.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      viewport.scrollLeft = scrollLeft - walk;
+    };
+
+    // Mouse Listeners
+    viewport.addEventListener('mousedown', (e) => startDrag(e.pageX));
+    window.addEventListener('mouseup', stopDrag);
+    viewport.addEventListener('mousemove', (e) => moveDrag(e.pageX));
+
+    // Touch Listeners for Mobile
+    viewport.addEventListener('touchstart', (e) => startDrag(e.touches[0].pageX), { passive: true });
+    window.addEventListener('touchend', stopDrag);
+    viewport.addEventListener('touchmove', (e) => moveDrag(e.touches[0].pageX), { passive: true });
+  };
+
+  setupInfiniteDrag('trackLgViewport');
+  setupInfiniteDrag('trackSmViewport');
 
   function openAppleDrawer() {
     appleDrawer.classList.add('is-active');
