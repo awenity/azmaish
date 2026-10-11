@@ -12,8 +12,11 @@
   --brand-flame-hover: #FF3B00;
   --brand-wa: #25D366;
   
-  --font-heading: 'Syne', -apple-system, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  /* Fonts */
+  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Cabinet Grotesk', sans-serif;
+  
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -32,18 +35,38 @@ html, body {
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   width: 100%;
-  overflow-x: hidden; /* Screen shifting prevent karta hai */
+  overflow-x: hidden;
 }
 
-/* Mobile Click Bug Prevention */
-body.modal-open {
+/* Typography Specifics */
+.brand-wordmark,
+.catalogue-title,
+.wall-title,
+.drawer-link,
+.placeholder-badge,
+.modal-placeholder-text {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.product-name,
+.caption-sub,
+.wall-sub {
+  font-family: var(--font-body);
+}
+
+/* Stable Modal Lock (No Content Jumps on Mobile) */
+body.modal-open,
+body.drawer-open,
+body.cart-open {
   overflow: hidden !important;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  touch-action: none;
 }
 
-/* Top Ticker */
+/* =========================================================================
+   TOP TICKER
+   ========================================================================= */
 .az-ticker {
   background: var(--brand-flame);
   color: #FFFFFF;
@@ -68,7 +91,9 @@ body.modal-open {
   100% { transform: translateX(-50%); }
 }
 
-/* Header */
+/* =========================================================================
+   HEADER
+   ========================================================================= */
 .az-header {
   position: sticky;
   top: 0;
@@ -114,7 +139,6 @@ body.modal-open {
 }
 
 .brand-wordmark {
-  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -138,6 +162,10 @@ body.modal-open {
   padding: 0.4rem;
   border-radius: 50%;
   transition: transform 0.15s, color 0.15s;
+}
+
+.nav-icon-btn:hover {
+  color: var(--brand-flame);
 }
 
 .cart-badge-wrap {
@@ -233,7 +261,9 @@ body.modal-open {
   cursor: pointer;
 }
 
-/* Apple Mobile Drawer Menu */
+/* =========================================================================
+   APPLE MOBILE DRAWER MENU
+   ========================================================================= */
 .apple-full-drawer {
   position: fixed;
   inset: 0;
@@ -274,7 +304,6 @@ body.modal-open {
 }
 
 .drawer-link {
-  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 5.5vw, 2.4rem);
   font-weight: 800;
   color: #E8E8ED;
@@ -301,7 +330,9 @@ body.modal-open {
   font-size: 1.25rem;
 }
 
-/* Hero Section */
+/* =========================================================================
+   HERO SECTION
+   ========================================================================= */
 .az-hero {
   padding: 1.25rem 1rem 1.8rem 1rem;
 }
@@ -422,7 +453,9 @@ body.modal-open {
   line-height: 1.35;
 }
 
-/* Products Catalogue: 2 Per Row on Mobile */
+/* =========================================================================
+   PRODUCTS: 2 PER ROW ON MOBILE
+   ========================================================================= */
 .az-catalogue {
   max-width: 1200px;
   margin: 0 auto;
@@ -446,7 +479,6 @@ body.modal-open {
 }
 
 .catalogue-title {
-  font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -494,8 +526,11 @@ body.modal-open {
   touch-action: manipulation;
 }
 
+.product-placeholder-wrap:hover {
+  background: #202026;
+}
+
 .placeholder-badge {
-  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 800;
   color: #FFFFFF;
@@ -583,6 +618,12 @@ body.modal-open {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.btn-card-cart:hover {
+  background: var(--brand-flame);
+  border-color: var(--brand-flame);
 }
 
 .btn-card-buy {
@@ -599,6 +640,11 @@ body.modal-open {
   cursor: pointer;
   text-align: center;
   white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.btn-card-buy:active {
+  background: var(--brand-flame-hover);
 }
 
 .no-results-box {
@@ -618,7 +664,7 @@ body.modal-open {
 }
 
 /* =========================================================================
-   SEAMLESS INFINITE APPLE WALL (ZERO START, ZERO END)
+   SEAMLESS INFINITE APPLE WALL
    ========================================================================= */
 .az-design-wall {
   background-color: #060608;
@@ -626,8 +672,40 @@ body.modal-open {
   width: 100%;
   display: block;
   overflow: hidden;
-  border-top: 1px solid var(--border-hairline, #26262B);
-  border-bottom: 1px solid var(--border-hairline, #26262B);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.wall-shell {
+  width: 100%;
+}
+
+.wall-header-center {
+  text-align: center;
+  padding: 0 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.wall-eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--brand-flame);
+  margin-bottom: 0.35rem;
+}
+
+.wall-title {
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.wall-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0.5rem auto 0 auto;
 }
 
 .apple-wall-stage {
@@ -654,9 +732,10 @@ body.modal-open {
   gap: 1rem;
   width: max-content;
   will-change: transform;
+  transform: translateZ(0); /* Hardware accelerated */
 }
 
-/* Auto Infinite Drift Animation (Zero jump seamless loop) */
+/* Infinite Marquee Animation */
 .track-lg {
   animation: infiniteScrollLg 28s linear infinite;
 }
@@ -671,16 +750,15 @@ body.modal-open {
 }
 
 @keyframes infiniteScrollLg {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 0.5rem)); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(calc(-50% - 0.5rem), 0, 0); }
 }
 
 @keyframes infiniteScrollSm {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 0.5rem)); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(calc(-50% - 0.5rem), 0, 0); }
 }
 
-/* Base Card Attributes */
 .wall-card {
   position: relative;
   border-radius: 18px;
@@ -706,19 +784,17 @@ body.modal-open {
   display: none;
 }
 
-/* Bada Size (Row 1) */
 .wall-card-lg {
   width: clamp(210px, 32vw, 260px);
   height: clamp(290px, 44vw, 360px);
 }
 
-/* Chota Size (Row 2) */
 .wall-card-sm {
   width: clamp(140px, 22vw, 185px);
   height: clamp(200px, 31vw, 255px);
 }
 
-/* Colors matching Screenshot */
+/* Palette Swatches */
 .card-rose      { background-color: #D67D7D; }
 .card-graphite  { background-color: #55585B; }
 .card-olive     { background-color: #6E7404; }
@@ -734,17 +810,15 @@ body.modal-open {
 .card-plum      { background-color: #7B5F77; }
 .card-blush     { background-color: #F8CADC; }
 .card-mist      { background-color: #EBD3DF; }
+
 /* =========================================================================
    MODAL FIX: ZERO MOBILE LAYOUT SHIFT OR JUMP
    ========================================================================= */
 .az-modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -755,7 +829,7 @@ body.modal-open {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
 .az-modal-backdrop.active {
@@ -771,13 +845,13 @@ body.modal-open {
   background: #151518;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 1.4rem 1.2rem 2.2rem 1.2rem;
+  padding: 1.2rem 1.2rem 1.8rem 1.2rem;
   transform: translateY(100%);
   transition: transform 0.35s var(--ease);
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-hairline);
-  overscroll-behavior: contain;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .az-modal-backdrop.active .az-modal-sheet {
@@ -789,7 +863,7 @@ body.modal-open {
   height: 4px;
   background: var(--border-hairline);
   border-radius: 99px;
-  margin: -0.4rem auto 1rem auto;
+  margin: -0.2rem auto 0.8rem auto;
 }
 
 .sheet-close-x {
@@ -807,12 +881,15 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 }
 
 .sheet-scroll-body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  max-height: calc(88vh - 40px);
+  flex: 1;
+  min-height: 0;
+  padding-right: 4px;
 }
 
 .modal-placeholder-tile {
@@ -828,7 +905,6 @@ body.modal-open {
 }
 
 .modal-placeholder-text {
-  font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 800;
   color: #FFFFFF;
@@ -855,7 +931,6 @@ body.modal-open {
 }
 
 .modal-title {
-  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -949,7 +1024,9 @@ body.modal-open {
   cursor: pointer;
 }
 
-/* Cart Panel */
+/* =========================================================================
+   CART DRAWER
+   ========================================================================= */
 .cart-drawer-backdrop {
   position: fixed;
   inset: 0;
@@ -1083,7 +1160,9 @@ body.modal-open {
   cursor: pointer;
 }
 
-/* Footer */
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
 .az-footer {
   background-color: #060608;
   padding: 4rem 1rem 3rem 1rem;
@@ -1158,7 +1237,9 @@ body.modal-open {
   margin-top: 0.3rem;
 }
 
-/* Responsive Breakpoints */
+/* =========================================================================
+   RESPONSIVE SCALING
+   ========================================================================= */
 @media (min-width: 768px) {
   .product-duo-grid {
     grid-template-columns: repeat(3, 1fr);
